@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Language</th>
+      <th scope="col">Date_start</th>
+      <th scope="col">Date_end</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for student in student_list %}
+    <tr>
+      <th scope="row">{{ student.id }}</th>
+      <td>{{ student.language }}</td>
+      <td>{{ student.date_start }}</td>
+      <td>{{ student.date_end }}</td>
+      <td>
+          <a href="{{ url_for('admin_student_update', student_id=student.id) }}">Изменить</a>
+          <a href="{{ url_for('admin_student_delete', student_id=student.id) }}">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+    </table>
+
+{% endblock content %}
